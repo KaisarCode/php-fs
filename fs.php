@@ -1,7 +1,7 @@
 <?php
 
 // List folders in directory
-static function listDirs($dir) {
+function listDirs($dir) {
     $arr = array();
     $dir = new DirectoryIterator($dir);
     foreach ($dir as $d) {
@@ -14,7 +14,7 @@ static function listDirs($dir) {
 }
 
 // List files in directory
-static function listFiles($dir) {
+function listFiles($dir) {
     $arr = array();
     $dir = new DirectoryIterator($dir);
     foreach ($dir as $d) {
