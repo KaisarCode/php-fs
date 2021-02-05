@@ -5,14 +5,15 @@ namespace KC;
 Class FS {
     
     // List folders in directory
-    static function listDirs($dir) {
+    static function listDirs($dir, $rec = 0) {
         $arr = array();
         $dir = new \DirectoryIterator($dir);
         foreach ($dir as $d) {
-            if ($d->isDir() && !$d->isDot()) {
-                $pth = $d->getPathname();
-                array_push($arr, $pth);
-            }
+            $pth = $d->getPathname();
+            $d->isDir() && !$d->isDot()
+            && array_push($arr, $pth) &&
+            $rec && $arr = array_merge
+            ($arr, self::listDirs($pth));
         }
         return $arr;
     }
@@ -22,10 +23,9 @@ Class FS {
         $arr = array();
         $dir = new \DirectoryIterator($dir);
         foreach ($dir as $d) {
-            if ($d->isFile()) {
-                $pth = $d->getPathname();
-                array_push($arr, $pth);
-            }
+            $pth = $d->getPathname();
+            $d->isFile() &&
+            array_push($arr, $pth);
         }
         return $arr;
     }
