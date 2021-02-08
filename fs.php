@@ -14,7 +14,7 @@ function listDirs($dir, $rec = 0) {
 }
 
 // List files in directory
-function listFiles($dir) {
+function listFiles($dir, $rec = 0) {
     $arr = array();
     $dir = new DirectoryIterator($dir);
     foreach ($dir as $d) {
