@@ -25,7 +25,7 @@ class FS {
         foreach ($dir as $d) {
             $pth = $d->getPathname();
             $d->isFile()
-            && array_push($arr, $pth)
+            && array_push($arr, $pth);
             $d->isDir() && !$d->isDot()
             && $rec && $arr = array_merge
             ($arr, self::listFiles($pth));
