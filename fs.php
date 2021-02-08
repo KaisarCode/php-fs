@@ -10,8 +10,7 @@ function listDirs($dir, $rec = 0) {
         && array_push($arr, $pth) &&
         $rec && $arr = array_merge
         ($arr, listDirs($pth));
-    }
-    return $arr;
+    } return $arr;
 }
 
 // List files in directory
@@ -20,8 +19,10 @@ function listFiles($dir) {
     $dir = new DirectoryIterator($dir);
     foreach ($dir as $d) {
         $pth = $d->getPathname();
-        $d->isFile() &&
-        array_push($arr, $pth);
-    }
-    return $arr;
+        $d->isFile()
+        && array_push($arr, $pth);
+        $d->isDir() && !$d->isDot()
+        && $rec && $arr = array_merge
+        ($arr, listFiles($pth));
+    } return $arr;
 }
