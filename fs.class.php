@@ -14,8 +14,7 @@ class FS {
             && array_push($arr, $pth) &&
             $rec && $arr = array_merge
             ($arr, self::listDirs($pth));
-        }
-        return $arr;
+        } return $arr;
     }
     
     // List files in directory
@@ -29,7 +28,6 @@ class FS {
             $d->isDir() && !$d->isDot()
             && $rec && $arr = array_merge
             ($arr, self::listFiles($pth));
-        }
-        return $arr;
+        } return $arr;
     }
 }
