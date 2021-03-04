@@ -2,7 +2,7 @@
 namespace KC;
 
 // Filesystem
-class FS {
+class Fs {
     
     // List folders in directory
     static function listDirs($dir, $rec = 0) {
